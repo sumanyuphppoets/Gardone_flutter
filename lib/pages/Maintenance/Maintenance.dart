@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart'; 
 
 class MaintenancePage extends StatelessWidget {
   const MaintenancePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Set the status bar to transparent with dark icons
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.green.shade900, // your preferred color
+    statusBarIconBrightness: Brightness.dark, // dark icons for Android
+    statusBarBrightness: Brightness.light, // light for iOS
+  ));
     return Scaffold(
       backgroundColor: const Color(0xFFE8F1E8),
       appBar: AppBar(
@@ -72,6 +79,41 @@ class MaintenancePage extends StatelessWidget {
                 'Herb Garden Setup',
               ],
             ),
+            // "How It Works" Section
+            const SizedBox(height: 32),
+            const Text(
+              'How It Works',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 20,
+              runSpacing: 20,
+              alignment: WrapAlignment.center,
+              children: [
+                howItWorksItem(
+                  svgAsset: 'assets/icons/Enquiry_form.svg',
+                  label: 'Fill the enquiry form',
+                ),
+                howItWorksItem(
+                  svgAsset: 'assets/icons/Contact_you.svg',
+                  label: 'Our team will\ncontact you',
+                ),
+                howItWorksItem(
+                  svgAsset: 'assets/icons/Schedule.svg',
+                  label: 'Schedule first visit',
+                ),
+                howItWorksItem(
+                  svgAsset: 'assets/icons/Desired_service.svg',
+                  label: 'Our garden expert\nwill execute desired service',
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),
@@ -117,12 +159,7 @@ class MaintenancePage extends StatelessWidget {
               ),
 
               const Spacer(),
-              SvgPicture.asset(
-                svgAssetPath,
-                height: 60,
-                width: 60,
-                color: const Color(0xFF1D5C2E), // Optional tint
-              ),
+              SvgPicture.asset(svgAssetPath, height: 60, width: 60),
             ],
           ),
           const SizedBox(height: 12),
@@ -151,6 +188,24 @@ class MaintenancePage extends StatelessWidget {
             ),
             onPressed: () {},
             child: const Text('Enquire Now'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // How It Works Icon Box
+  Widget howItWorksItem({required String svgAsset, required String label}) {
+    return SizedBox(
+      width: 150,
+      child: Column(
+        children: [
+          SvgPicture.asset(svgAsset, height: 40, width: 40),
+          const SizedBox(height: 8),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 14),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

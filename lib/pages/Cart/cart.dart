@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_app/pages/AddAddress/Address.dart';
+import 'package:flutter/services.dart';
+import 'package:my_app/pages/Wishlist/wishlist.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -80,10 +82,21 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
         leading: const BackButton(color: Colors.black),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 12),
-            child: Icon(Icons.favorite_border, color: Colors.black),
+            padding: const EdgeInsets.only(right: 12),
+            child: IconButton(
+              icon: const Icon(
+                Icons.favorite_border,
+                color: Colors.black,
+              ), // Favorite icon
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WishlistPage()),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -404,9 +417,7 @@ class _CartPageState extends State<CartPage> {
                       const SizedBox(height: 4),
                       const Text(
                         'Grand Total',
-                        style: TextStyle(color: Colors.black,
-                        fontSize: 16
-                        ),
+                        style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                     ],
                   ),

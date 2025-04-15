@@ -134,9 +134,9 @@ class HomeScreenContent extends StatelessWidget {
             SliderWidget(), // Add the slider widget here
             CategoriesSlider(),
             SizedBox(height: 20),
-            CardSlider(title: "New Arrivals", items: newArrivals),
+            CardSlider(title: "New Arrivals", items: newArrivals, user: true),
             SizedBox(height: 20),
-            CardSlider(title: "Best Sellers", items: bestSellers),
+            CardSlider(title: "Best Sellers", items: bestSellers, user: true),
             SizedBox(height: 20),
             _buildBanner(),
             SizedBox(height: 20),

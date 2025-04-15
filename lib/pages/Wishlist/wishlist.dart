@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class WishlistPage extends StatelessWidget {
   const WishlistPage({super.key});
@@ -135,7 +136,7 @@ class WishlistPage extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => SystemNavigator.pop(),
         ),
       ),
       body: Padding(
